@@ -1,0 +1,119 @@
+.weather-card{  padding:16px; color:#3c7864; font-size:1.2em; border:#ffc107 solid 2px;}
+.news-card{border:#ffc107 solid 2px;}
+.weather-card p{ margin-bottom:0;}
+
+.coltop{ margin-bottom:30px; background-color:#fff; border:#ffc107 solid 2px; padding:10px 0; margin-left:0; margin-right:0; color:#000;}
+.coltop h1{ margin:0;}
+
+.tv-bg{ background-image:url(bg.png); background-repeat:no-repeat; background-size: cover; height:100%; padding:30px;}
+.tv-bg h1{ text-transform:uppercase; font-size:26px; line-height:40px;}
+
+.london-winfo{ border-bottom:#8bbbab solid 1px;}
+.london-winfo img{ display:inline-block; margin-bottom:10px; padding:0 10px; max-width:84%;}
+.london-winfo > p{font-size:1.1em; font-weight:500; margin-bottom:10px;}
+.london-winfo .tbig{font-size:2em; font-weight:600;}
+.london-winfo .tsmall{font-size:0.8em; font-weight:400; line-height:1.2;}
+
+.time-cer{ background:#fff; border-radius:50%; border:#ffc107 solid 5px; width:35%; text-align:center;}
+.time-clock > div{ display:inline-block; vertical-align:middle; font-size:2.5em; font-weight:600; }
+.weather-left{border-right:#8bbbab solid 1px; padding-right:8px !important; padding-left:8px !important}
+.cer-vcenter{ display:table; height:100%; width:100%;}
+.cer-vcenter > p{ display:table-cell; vertical-align:middle; line-height:1;}
+.cer-vcenter > p span{ display:block; font-size:0.5em; font-weight:400;}
+.week-weather{ margin:0;}
+.week-weather > li{ text-align:center; border-right:#8bbbab solid 1px; padding:0 8px;}
+.week-weather > li li{padding-left: 5px; padding-right: 0;}
+.week-weather > li:last-child{ border-right:none;}
+.month-title{ border-top:#8bbbab solid 1px;  font-size:1.4em; color:#3c7864; padding:8px 0; text-align:center; border-bottom:#8bbbab solid 1px; margin-bottom:18px;}
+.bx-wrapper{ margin:0;}
+.bx-wrapper .bx-pager{ bottom:20px;}
+.bxslider img{ width:100%;}
+
+.form-col{ margin-top:30px;}
+.form-col textarea.form-control{ padding:16px;}
+.carcal-info{ margin-top:16px;}
+.carcal-info > img{ display:inline-block; width:40%}
+.carcal-info img{ margin-bottom:10px; padding:}
+.carcal-info ul li img{ margin-bottom:0; margin-right:3px;}
+.weather-right{ padding-left:8px; padding-right:8px;}
+
+/*.coltop{ height:6%}
+.colmiddle{ height:94%}
+.colmiddle-left{ height:100%}
+.bx-wrapper{ height:60%}
+.bx-wrapper img, .bx-viewport{ height:100% !important;}*/
+
+.search-list{ display:block; margin-bottom:0; position:relative;}
+.search-list .listview.lv-lg .lv-item{ padding:8px 35px 8px 16px;}
+.search-list .listview{overflow:scroll;}
+
+.middle-container{  margin-bottom:30px;}
+
+.form-inputc{ padding:8px 20px; position:absolute; width:100%; bottom:0; background:#fff; margin:0; z-index:999;}
+
+@media (max-width: 1600px) {
+	.weather-card{ padding:16px; color:#3c7864; font-size:1em;}	
+}
+
+.pro-list{ padding:10px; overflow:scroll; overflow-x:hidden;}
+.pro-list > ul { margin:0;}
+.pro-list > ul > li{ padding:10px; margin:0; display:inline-block;}
+.tv-bg h3{ color:#fff; margin:0;}
+.pro-card{ width:276px; border:#1176be solid 1px; border-radius:4px; text-align:center;}
+.pro-card h4{ color:#fff; background-color:#1176be; padding:15px 0; margin:0; font-size:1.6em;}
+.pro-card ul{ padding:20px 0; margin:0;}
+.pro-card ul li{ color:#777;}
+.pro-card ul li p{ font-size:2em; color:#333; font-weight:600; margin:0;}
+.search-list .actions span{ display:inline-block; padding-bottom: 8px; vertical-align:middle;}
+
+
+
+.flip-card {
+  position: relative;
+  z-index: 1;
+  -moz-perspective: 1000px;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+.flip-card .wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -moz-transition: -moz-transform 0.4s linear;
+  -o-transition: -o-transform 0.4s linear;
+  -webkit-transition: -webkit-transform 0.4s linear;
+  transition: transform 0.4s linear;
+}
+.flip-card .wrap.flipped {
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.flip-card .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.flip-card .face.back {
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flipbtn{ position:absolute; top:0; right:0; background:#fff; padding:4px;}
+.btn-primary{ background-color:#ffc107; color:#333;}

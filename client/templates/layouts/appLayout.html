@@ -1,0 +1,276 @@
+<template name="appLayout">
+	<!--[if lt IE 9]>
+    <p class="browser-warning"><strong><i class="icon-exclamation-sign"></i> Warning</strong> - You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to properly view this website.</p>
+  <![endif]-->
+	<div class="wrapper">
+		<header id="header" class="clearfix" data-current-skin="blue">
+			<ul class="header-inner">
+				<li id="menu-trigger" data-trigger="#sidebar">
+					<div class="line-wrap">
+						<div class="line top"></div>
+						<div class="line center"></div>
+						<div class="line bottom"></div>
+					</div>
+				</li>
+
+				<li class="logo hidden-xs">
+					<a href="index.html">Digital Directory</a>
+				</li>
+
+				<!-- <li class="pull-right">
+					<ul class="top-menu">
+						<li id="toggle-width">
+							<div class="toggle-switch">
+								<input id="tw-switch" type="checkbox" hidden="hidden" >
+								<label for="tw-switch" class="ts-helper"></label>
+							</div>
+						</li>
+
+
+					</ul>
+				</li> -->
+			</ul>
+
+
+			<!-- Top Search Content -->
+			<div id="top-search-wrap">
+				<div class="tsw-inner">
+					<i id="top-search-close" class="zmdi zmdi-arrow-left"></i>
+					<input type="text">
+				</div>
+			</div>
+		</header>
+
+		<section id="main" data-layout="layout-1">
+			<aside id="sidebar" class="sidebar c-overflow mCustomScrollbar _mCS_1 mCS-autoHide" style="overflow: visible;">
+				<div id="mCSB_1" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside" tabindex="0">
+					<div id="mCSB_1_container" class="mCSB_container mCS_x_hidden mCS_no_scrollbar_x" style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
+						<div class="profile-menu">
+							<a href="">
+								<div class="profile-pic">
+									<img src="/cfs/files/Images/{{currentUser.profile.profilePic}}" alt="No Image" class="mCS_img_loaded">
+								</div>
+
+								<div class="profile-info">
+									{{currentUser.profile.name}}
+
+									<i class="zmdi zmdi-caret-down"></i>
+								</div>
+							</a>
+
+							<ul class="main-menu">
+								{{#if menuAccess 'settings'}}
+								<li>
+									<a href="{{pathFor 'settings'}}"><i class="zmdi zmdi-settings"></i> Settings</a>
+								</li>
+								{{/if}}
+								<li>
+									<a href="{{pathFor 'profileView'}}"><i class="zmdi zmdi-accounts"></i>Profile View</a>
+								</li>
+								<li>
+									<a href="{{pathFor 'changePassword'}}"><i class="zmdi zmdi-lock"></i> Change Password</a>
+								</li>
+								<li>
+									<a id="btn-logout" href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+								</li>
+							</ul>
+						</div>
+
+						<ul class="main-menu">
+								{{#if menuAccess 'UserList'}}
+							<li class="{{menuItemClass 'dashboard'}}">
+								<a href="{{pathFor 'dashboard'}}"><i class="zmdi zmdi-view-dashboard"></i> Dashboard</a>
+							</li>
+								{{/if}}
+							{{#if menuAccess 'UserList'}}
+							<li class="{{menuItemClass 'UserList'}}"><a href="{{pathFor 'UserList'}}"><i class="zmdi zmdi-accounts"></i><span>UserList</span></a>
+							</li>
+							{{/if}}
+							<li class="{{menuItemClass 'directory'}}"><a href="{{pathFor 'directory'}}"><i class="zmdi zmdi-city"></i><span>Directory</span></a>
+							</li>
+							<li class="{{menuItemClass 'tenant'}}"><a href="{{pathFor 'tenant'}}"><i class="zmdi zmdi-home"></i><span>Tenant</span></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: block;">
+					<div class="mCSB_draggerContainer">
+						<div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; height: 119px; top: 0px; display: block; max-height: 297px;" oncontextmenu="return false;">
+							<div class="mCSB_dragger_bar" style="line-height: 50px;"></div>
+						</div>
+						<div class="mCSB_draggerRail"></div>
+					</div>
+				</div>
+				<div id="mCSB_1_scrollbar_horizontal" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal-dark mCSB_scrollTools_horizontal" style="display: none;">
+					<div class="mCSB_draggerContainer">
+						<div id="mCSB_1_dragger_horizontal" class="mCSB_dragger" style="position: absolute; min-width: 50px; width: 0px; left: 0px;" oncontextmenu="return false;">
+							<div class="mCSB_dragger_bar"></div>
+						</div>
+						<div class="mCSB_draggerRail"></div>
+					</div>
+				</div>
+			</aside>
+
+			<aside id="chat" class="sidebar c-overflow mCustomScrollbar _mCS_2 mCS-autoHide" style="overflow: visible;">
+				<div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside" tabindex="0">
+					<div id="mCSB_2_container" class="mCSB_container mCS_x_hidden mCS_no_scrollbar_x" style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
+
+						<div class="chat-search">
+							<div class="fg-line">
+								<input type="text" class="form-control" placeholder="Search People">
+							</div>
+						</div>
+
+						<div class="listview">
+							<a class="lv-item" href="">
+								<div class="media">
+									<div class="pull-left p-relative">
+										<img class="lv-img-sm mCS_img_loaded" src="img/profile-pics/2.jpg" alt="">
+										<i class="chat-status-busy"></i>
+									</div>
+									<div class="media-body">
+										<div class="lv-title">Jonathan Morris</div>
+										<small class="lv-small">Available</small>
+									</div>
+								</div>
+							</a>
+
+							<a class="lv-item" href="">
+								<div class="media">
+									<div class="pull-left">
+										<img class="lv-img-sm mCS_img_loaded" src="../images/avatar.png" alt="">
+									</div>
+									<div class="media-body">
+										<div class="lv-title">David Belle</div>
+										<small class="lv-small">Last seen 3 hours ago</small>
+									</div>
+								</div>
+							</a>
+
+							<a class="lv-item" href="">
+								<div class="media">
+									<div class="pull-left p-relative">
+										<img class="lv-img-sm mCS_img_loaded" src="img/profile-pics/3.jpg" alt="">
+										<i class="chat-status-online"></i>
+									</div>
+									<div class="media-body">
+										<div class="lv-title">Fredric Mitchell Jr.</div>
+										<small class="lv-small">Availble</small>
+									</div>
+								</div>
+							</a>
+
+							<a class="lv-item" href="">
+								<div class="media">
+									<div class="pull-left p-relative">
+										<img class="lv-img-sm mCS_img_loaded" src="img/profile-pics/4.jpg" alt="">
+										<i class="chat-status-online"></i>
+									</div>
+									<div class="media-body">
+										<div class="lv-title">Glenn Jecobs</div>
+										<small class="lv-small">Availble</small>
+									</div>
+								</div>
+							</a>
+
+							<a class="lv-item" href="">
+								<div class="media">
+									<div class="pull-left">
+										<img class="lv-img-sm mCS_img_loaded" src="img/profile-pics/5.jpg" alt="">
+									</div>
+									<div class="media-body">
+										<div class="lv-title">Bill Phillips</div>
+										<small class="lv-small">Last seen 3 days ago</small>
+									</div>
+								</div>
+							</a>
+
+							<a class="lv-item" href="">
+								<div class="media">
+									<div class="pull-left">
+										<img class="lv-img-sm mCS_img_loaded" src="img/profile-pics/6.jpg" alt="">
+									</div>
+									<div class="media-body">
+										<div class="lv-title">Wendy Mitchell</div>
+										<small class="lv-small">Last seen 2 minutes ago</small>
+									</div>
+								</div>
+							</a>
+							<a class="lv-item" href="">
+								<div class="media">
+									<div class="pull-left p-relative">
+										<img class="lv-img-sm mCS_img_loaded" src="img/profile-pics/7.jpg" alt="">
+										<i class="chat-status-busy"></i>
+									</div>
+									<div class="media-body">
+										<div class="lv-title">Teena Bell Ann</div>
+										<small class="lv-small">Busy</small>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: block;">
+					<div class="mCSB_draggerContainer">
+						<div id="mCSB_2_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; height: 180px; top: 0px; display: block; max-height: 297px;" oncontextmenu="return false;">
+							<div class="mCSB_dragger_bar" style="line-height: 50px;"></div>
+						</div>
+						<div class="mCSB_draggerRail"></div>
+					</div>
+				</div>
+				<div id="mCSB_2_scrollbar_horizontal" class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_horizontal" style="display: none;">
+					<div class="mCSB_draggerContainer">
+						<div id="mCSB_2_dragger_horizontal" class="mCSB_dragger" style="position: absolute; min-width: 50px; width: 0px; left: 0px;" oncontextmenu="return false;">
+							<div class="mCSB_dragger_bar"></div>
+						</div>
+						<div class="mCSB_draggerRail"></div>
+					</div>
+				</div>
+			</aside>
+
+
+			<section id="content">
+				<div class="container">
+					{{ > yield }}
+				</div>
+			</section>
+		</section>
+
+		<!-- Page Loader -->
+		<div class="page-loader" style="display: none;">
+			<div class="preloader pls-blue">
+				<svg class="pl-circular" viewBox="25 25 50 50">
+					<circle class="plc-path" cx="50" cy="50" r="20"></circle>
+				</svg>
+
+				<p>Please wait...</p>
+			</div>
+		</div>
+
+
+
+		<div class="flot-tooltip" style="display: none;"></div>
+		<div class="flot-tooltip" style="display: none;"></div>
+		<div>
+			<div class="sweet-overlay" tabindex="-1"></div>
+			<div class="sweet-alert" tabindex="-1">
+				<div class="icon error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span>
+				</div>
+				<div class="icon warning"> <span class="body"></span> <span class="dot"></span> </div>
+				<div class="icon info"></div>
+				<div class="icon success"> <span class="line tip"></span> <span class="line long"></span>
+					<div class="placeholder"></div>
+					<div class="fix"></div>
+				</div>
+				<div class="icon custom"></div>
+				<h2>Title</h2>
+				<p class="lead text-muted">Text</p>
+				<p>
+					<button class="cancel btn btn-lg" tabindex="2">Cancel</button>
+					<button class="confirm btn btn-lg" tabindex="1">OK</button>
+				</p>
+			</div>
+		</div>
+	</div>
+</template>

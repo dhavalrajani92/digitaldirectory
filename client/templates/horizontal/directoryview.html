@@ -1,0 +1,743 @@
+<template name="directoryview">
+    {{> Template.dynamic template=getMobileOrWeb}}
+</template>
+
+<template name="NewVerticalViewTemplate">
+    {{getCurrentTime}}
+    <section id="content" class="container-fluid tv-bg vertical-view">
+
+        <div class="row coltop ">
+            <div class="col-sm-12">
+                <h1 class="text-center">{{DirectoryDetails.title}}</h1>
+            </div>
+            <div class="col-sm-12 text-center">
+                <img src="/cfs/files/Images/{{DirectoryDetails.logo}}">
+            </div>
+        </div>
+
+        <div class="row coltwo">
+
+            <div class="col-sm-6">
+                <div class="card weather-card ">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4 text-center weather-left" style="margin-top:14px;">
+                                <div class="london-winfo">
+                                    <p>{{DirectoryDetails.location.formattedAddress}}</p>
+                                    <div class="icon-wrap">
+                                        <i class="wi {{classForLocationWeather}} clsiconcolor"></i>
+                                    </div>
+                                    <ul class="list-inline">
+                                        <li class="tbig">{{WeatherData.temperature}}°F</li>
+                                        <!-- <li class="tsmall">
+                                               <p>16</p>
+                                                 <p>2</p>
+                                             </li> -->
+                                    </ul>
+                                </div>
+                                <div class="carcal-info">
+                                    <!-- <img class="img-responsive" src="/images/cercal.png">
+                                    <ul class="list-inline">
+                                        <li><img src="/images/i1.png" title="Wind Speed">{{WeatherData.windSpeed}}</li>
+                                        <li><img src="/images/i2.png" title="Wind Bearing">{{WeatherData.windBearing}}</li>
+                                    </ul> -->
+                                </div>
+                            </div>
+                            <div class="col-md-8 weather-right">
+                                <div class="time-clock text-center">
+                                    <div class="time-cer clsbordercolor">
+                                        <div class="cer-vcenter">
+                                            <p>{{currentDateTime.hour}}<span>HH</span></p>
+                                        </div>
+                                    </div>
+                                    <div>:</div>
+                                    <div class="time-cer clsbordercolor">
+                                        <div class="cer-vcenter">
+                                            <p>{{currentDateTime.minute}}<span>MM</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2 class="month-title">{{currentDateTime.date}}</h2>
+                                <ul class="list-inline nav-justified week-weather">
+                                    {{#each otherWeatherData}}
+                                    <li>
+                                        <div class="icon-wrap">
+                                            <i class="wi {{this.iconName}} clsiconcolor"></i>
+                                        </div>
+                                        <p>{{this.date}}</p>
+                                        <ul class="list-inline">
+                                            <li>{{this.temperatureMin}}°F</li>
+
+                                        </ul>
+                                    </li>
+                                    {{/each}}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="flip-card post">
+                    <div class="cls-newsFeed">
+                        <div class="wrap">
+                            <div class="card news-card face front ">
+
+                                <div class="bp-header clsimageappend">
+                                    <img alt="" style="width:515px;height:221px;" src="/images/preview-new.jpg" id="imagetagID" class="img-responsive">
+                                </div>
+                                <div class="p-15">
+                                    <h4 class="clsRssFeedTitle" style="color:#3c7864"></h4>
+                                    <div class="clsRssFeedDesc"></div>
+                                </div>
+                                <!-- <div class="caption">
+                                    <h4 class="clsRssFeedTitle" style="color:#3c7864"></h4>
+                                    <div class="clsRssFeedDesc"></div>
+                                </div> -->
+
+                                <!--<a aria-hidden="true" data-icon="&#x69;" class="flipbtn flip">flip</a>-->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="colmiddle">
+            <div class="middle-container">
+
+
+                <div class="row">
+                    <div class="col-sm-12 colmiddle-left">
+                        <div class="card search-list">
+                            <div class="listview lv-bordered lv-lg">
+                                <div class="lv-body">
+
+                                    {{#each getAllTennantDirectory}}
+                                    <div class="lv-item media">
+                                        <div class="pull-left">
+                                            {{#if IsVisible}}
+                                            <img alt="" src="/cfs/files/Images/{{logo}}" class="lv-img-sm"> {{else}}
+                                            <img alt="" src="../images/NoImageIcon.jpg" class="lv-img-sm"> {{/if}}
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lv-title">{{Name}}</div>
+                                            <small class="lv-small">Floor: {{Floor}}, Suit: {{Suite}}</small>
+                                            <!-- <div class="lv-actions actions">
+                                            <span>2</span>
+                                            <a aria-expanded="true" href="">
+                                               <i class="zmdi zmdi-chevron-right zmdi-hc-fw"></i>
+                                            </a>
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                    {{/each}}
+
+
+
+                                </div>
+                            </div>
+                            <div class="form-group form-inputc ">
+                                <div class="fg-line">
+                                    <!-- <input placeholder="Let us type some lorem ipsum...." type="text" class="form-control"> -->
+                                    <input type="text" class="form-control input-lg nav-bar-search-bar" id="write" placeholder="Search Tenant here" autocomplete="off">
+                                    <div id="keyboard"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 colmiddle-left">
+                        {{#if galaryIamage.length}}
+                        <div class="slider-card ">
+                            <ul class="bxslider">
+                                {{#each galaryIamage}} {{#if value}}
+                                <li><img title="{{caption}}" src="/cfs/files/Images/{{value}}" /></li>
+                                {{/if}} {{/each}}
+                            </ul>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+
+                <!-- <button class="btn btn-primary btn-lg btn-block waves-effect stbtn start-button">Start Button</button> -->
+                <button class="btn btn-primary btn-lg btn-block waves-effect stbtn home-button" style="display:none;">Home</button>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <div class="iconbg col-sm-2" id="Handicap">
+                            <img src="../images/hicon" class="img-responsive">
+                        </div>
+
+                        <div class="form-group form-col col-sm-10" style="padding-right:0px;padding-left: 20px;">
+
+                            <div class="fg-line" style="background-color: white;height: 160px;padding: 17px;">
+                                {{#if isServiceTypeFree}}  {{{brandingData}}}{{/if}}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+</template>
+
+<template name="VerticalViewTemplate">
+    {{getCurrentTime}}
+    <div class="customContainer">
+
+        <div class="row customdivblue backgroundBlack" style="height: 5%;">
+            <div class="col-sm-12 text-center" style="padding-top: 1%;">
+                <div class="col-sm-8 ">
+                    <div class="col-sm-7 text-left">
+                        <h3 class="h3color">{{DirectoryDetails.title}} </h3></div>
+                    <div class="col-sm-4 text-center">
+                        <img id="imgPreview" src="/cfs/files/Images/{{DirectoryDetails.logo}}" width="100">
+                    </div>
+                </div>
+                <div class=" col-sm-4 text-right">
+                    <h3 class="h3color">{{currentDateTime}}</h3>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row" style="height:30%">
+            <div class="col-sm-12" style="height: 100%;">
+                <div id="tennantSearch" class="row" style="height: 100%; padding: 10px;">
+                    <div class="" style="height: 50%; overflow: scroll; margin-bottom: 10px;">
+                        <div class="card-body">
+                            <div class="list-group">
+
+                                <div class="">
+                                    {{#each getAllTennantDirectory}}
+                                    <a class="list-group-item media" href="">
+                                        <div class="pull-left">
+                                            <img class="" src="/cfs/files/Images/{{logo}}" width="50" alt="">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="lgi-heading">{{Name}}</div>
+                                            <small class="lgi-text">Floor: {{Floor}}, Suit: {{Suite}}</small>
+                                        </div>
+                                    </a>
+                                    {{/each}}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" style="height:50%">
+                        {{> inputAutocomplete settings=settings id="write" autocomplete="off" class="form-control input-lg nav-bar-search-bar" name="txtCustomerSearchProducutHome" placeholder="Search Tenant here"}}
+                        <div id="keyboard"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" style="height: 30%;">
+            <div class="col-sm-12" style="height: 100%;">
+                <div class="col-sm-12 slider customdivblue" style="height: 90%;">
+
+                    {{#if galaryIamage.length}}
+                    <div id="carousel-example-generic" class="carousel slide ImageSliderId" data-ride="carousel">
+
+                        <ol class="carousel-indicators">
+                            {{#each galaryIamage}} {{#if value}}
+                            <li data-target="#carousel-example-generic" data-slide-to="{{index}}" class="{{class}}"></li>
+                            {{/if}} {{/each}}
+                        </ol>
+
+
+                        <div class="carousel-inner" role="listbox">
+                            {{#each galaryIamage}} {{#if value}}
+                            <div class="item {{class}}">
+                                <img src="/cfs/files/Images/{{value}}" alt="">
+
+                                <div class="carousel-caption">
+                                    <p>{{caption}}</p>
+                                </div>
+                            </div>
+                            {{/if}} {{/each}}
+
+                        </div>
+
+
+                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="zmdi zmdi-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="zmdi zmdi-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    {{/if}}
+
+
+                </div>
+
+                <!-- <div class="col-sm-12 text-center customdivblue startbuttonId btn-info" style="height: 10%">
+                    <label>
+                        <h3>
+                  Start Searching
+                </h3>
+                    </label>
+                </div> -->
+            </div>
+
+        </div>
+        <div class="row" style="height: 30%;">
+            <div class="col-sm-12" style="height: 100%;">
+                <div class="col-sm-6  customdivblue" style="height: 100%;">
+
+                    <div class="dash-widget-item bgm-lime">
+                        <div id="weather-widget">
+                            <div class="weather-status">{{WeatherData.temperature}}°F</div>
+                            <ul class="weather-info">
+                                <li>{{DirectoryDetails.location.formattedAddress}}</li>
+                                <li class="currently">{{WeatherData.summary}}</li>
+                            </ul>
+                            <div class="weather-icon wi-30"></div>
+                            <div>
+                                {{#each otherWeatherData}} {{this.date}} {{this.temperatureMin}}°F
+                                <br/>
+                                <br/> {{/each}}
+                            </div>
+                            <div class="dash-widget-footer">
+                                <div class="weather-list tomorrow">
+                                    <span class="weather-list-icon wi-47"></span>
+                                    <span>{{WeatherData.windSpeed}}</span>
+                                    <span>Wind Speed</span>
+                                </div>
+                                <div class="weather-list after-tomorrow">
+                                    <span class="weather-list-icon wi-47"></span>
+                                    <span>{{WeatherData.windBearing}}</span>
+                                    <span>Wind Bearing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6  customdivblue" style="height: 100%; overflow-y: scroll;">
+
+                    <div class="card news-section">
+                        <div class="card-header ch-alt m-b-20">
+                            <h2>News
+            </h2>
+
+                        </div>
+
+                        <div class="card-body">
+                            <div class="listview">
+                                {{#each rssFeeds.rssFeed}}
+                                <a href="{{link}}" target="_blank" class="lv-item">
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <div class="lv-title">{{title}}</div>
+                                            <small class="lv-small">{{description}}</small>
+                                        </div>
+                                    </div>
+                                </a>
+                                {{/each}}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div></div>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+        <div class="row customdivblue backgroundBlack" style="height: 5%">
+            <!-- <div class="col-sm-2 text-center" style="margin-top:1%; cursor:pointer ">
+              <h3 class="">  handicape person</h3>
+          </div> -->
+            <div class="col-sm-12 text-center" style="margin-top:1%">
+                <h3 class="h3color">  LOGO / BRANDING</h3>
+            </div>
+        </div>
+    </div>
+</template>
+<template name="searchAutoSuggestion">
+    <div style="display: flex;height: 32px;width: 32px;float: left;border: 1px solid gainsboro;">
+        <img src="/cfs/files/Images/{{logo}}" class="searchProductimg" style="width: 30px;">
+    </div>
+    <span class="searchProductname" style="float:left; padding: 5px;">{{Name}}</span>
+    <!--{{suggestionData summaryReview}}-->
+
+</template>
+
+<template name="tttttTemplate">
+    {{getCurrentTime}}
+    <div class="customContainer">
+
+        <div class="row customdivblue " style="height: 10%;">
+            <div class="col-sm-12 text-center" style="padding-top: 1%;">
+                <div class="col-sm-8 ">
+                    <div class="col-sm-7 text-left">
+                        <h3 class="h3color">{{DirectoryDetails.title}} </h3></div>
+                    <div class="col-sm-4 text-center">
+                        <img id="imgPreview" src="/cfs/files/Images/{{DirectoryDetails.logo}}" width="100">
+                    </div>
+                </div>
+                <div class=" col-sm-4 text-right">
+                    <h3 class="h3color">{{currentDateTime}}</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row" style="height: 80%;">
+            <div class="col-sm-8" style="height: 100%;">
+                <div class="col-sm-12 slider customdivblue" style="height: 90%;">
+
+                    {{#if galaryIamage.length}}
+                    <div id="carousel-example-generic" class="carousel slide ImageSliderId" data-ride="carousel">
+
+                        <ol class="carousel-indicators">
+                            {{#each galaryIamage}} {{#if value}}
+                            <li data-target="#carousel-example-generic" data-slide-to="{{index}}" class="{{class}}"></li>
+                            {{/if}} {{/each}}
+                        </ol>
+
+
+                        <div class="carousel-inner" role="listbox">
+                            {{#each galaryIamage}} {{#if value}}
+                            <div class="item {{class}}">
+                                <img src="/cfs/files/Images/{{value}}" alt="">
+
+                                <div class="carousel-caption">
+                                    <p>{{caption}}</p>
+                                </div>
+                            </div>
+                            {{/if}} {{/each}}
+
+                        </div>
+
+
+                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                            <span class="zmdi zmdi-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                            <span class="zmdi zmdi-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    {{/if}}
+                    <div id="tennantSearch" class="row" style="height: 100%; padding: 10px; display: none;">
+                        <div class="tennantList" style="height:60%; overflow: scroll; margin-bottom: 10px;">
+                            <div class="card-body">
+                                <div class="list-group">
+
+                                    <div class="">
+                                        {{#each getAllTennantDirectory}}
+                                        <a class="list-group-item media" href="">
+                                            <div class="pull-left">
+                                                <img class="" src="/cfs/files/Images/{{logo}}" width="50" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="lgi-heading">{{Name}}</div>
+                                                <small class="lgi-text">Floor: {{Floor}}, Suit: {{Suite}}</small>
+                                            </div>
+                                        </a>
+                                        {{/each}}
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="" style="height:35%">
+                            <!-- {{> inputAutocomplete settings=settings id="write" autocomplete="off" class="form-control input-lg nav-bar-search-bar" name="txtCustomerSearchProducutHome" placeholder="Search Tenant here"}} -->
+                            <input type="text" class="form-control input-lg nav-bar-search-bar" id="write" placeholder="Search Tenant here" autocomplete="off">
+                            <div id="keyboard"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-12 text-center customdivblue startbuttonId btn-info" style="height: 10%">
+                    <label style="margin-top:1%">
+                        <h3>
+                  Start Searching
+                </h3>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-4" style="height: 100%;">
+                <div class="col-sm-12  customdivblue" style="height: 50%;">
+
+                    <div class="dash-widget-item bgm-lime">
+                        <div id="weather-widget">
+                            <div class="weather-status">{{WeatherData.temperature}}°F</div>
+                            <ul class="weather-info">
+                                <li>{{DirectoryDetails.location.formattedAddress}}</li>
+                                <li class="currently">{{WeatherData.summary}}</li>
+                            </ul>
+                            <div class="col-sm-12">
+                                <div class="col-sm-6">
+                                    <br> {{#each otherWeatherData}} {{this.date}} {{this.temperatureMin}}°F
+                                    <br/> {{/each}}
+                                </div>
+                                <div class="weather-icon wi-30 col-sm-6"></div>
+                            </div>
+                            <div class="dash-widget-footer">
+                                <div class="weather-list tomorrow">
+                                    <span class="weather-list-icon wi-47"></span>
+                                    <span>{{WeatherData.windSpeed}}</span>
+                                    <span>Wind Speed</span>
+                                </div>
+                                <div class="weather-list after-tomorrow">
+                                    <span class="weather-list-icon wi-47"></span>
+                                    <span>{{WeatherData.windBearing}}</span>
+                                    <span>Wind Bearing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12  customdivblue" style="height: 50%; overflow-y: scroll;">
+
+                    <div class="card news-section">
+                        <div class="card-header ch-alt m-b-20">
+                            <h2>News
+                      </h2>
+
+                        </div>
+
+                        <div class="card-body">
+                            <div class="listview">
+                                {{#each rssFeeds.rssFeed}}
+                                <a href="{{link}}" target="_blank" class="lv-item">
+                                    <div class="media">
+
+                                        <div class="media-body">
+                                            <div class="lv-title">{{title}}</div>
+                                            <small class="lv-small">{{description}}</small>
+                                        </div>
+                                    </div>
+                                </a>
+                                {{/each}}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div></div>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+        <div class="row customdivblue backgroundBlack" style="height: 10%">
+            <div class="col-sm-12 text-center" style="margin-top:1%">
+                <h3 class="h3color">  LOGO / BRANDING</h3>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="HorizontalViewTemplate">
+    {{getCurrentTime}}
+    <section id="content" class="container-fluid tv-bg horizontal-view">
+        <div class="row coltop ">
+            <div class="col-sm-8">
+                <h1 class="text-center">{{DirectoryDetails.title}}</h1>
+            </div>
+            <div class="col-sm-4 text-right">
+                <img src="/cfs/files/Images/{{DirectoryDetails.logo}}">
+            </div>
+
+        </div>
+        <div class="row colmiddle">
+
+            <div class="col-sm-8 colmiddle-left">
+                <div class="middle-container">
+                    {{#if galaryIamage.length}}
+                    <div class="slider-card ">
+                        <ul class="bxslider">
+                            {{#each galaryIamage}} {{#if value}}
+                            <li><img title="{{caption}}" src="/cfs/files/Images/{{value}}" /></li>
+                            {{/if}} {{/each}}
+                        </ul>
+                    </div>
+                    {{/if}}
+                    <div class="card search-list" style="display:none">
+                        <div class="listview lv-bordered lv-lg ">
+                            <div class="lv-body">
+                                {{#each getAllTennantDirectory}}
+                                <div class="lv-item media">
+                                    <div class="pull-left">
+                                        {{#if IsVisible}}
+                                        <img alt="" src="/cfs/files/Images/{{logo}}" class="lv-img-sm"> {{else}}
+                                        <img alt="" src="../images/NoImageIcon.jpg" class="lv-img-sm"> {{/if}}
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="lv-title">{{Name}}</div>
+                                        <small class="lv-small">Floor: {{Floor}}, Suit: {{Suite}}</small>
+                                        <!-- <div class="lv-actions actions">
+                                              <span>2</span>
+                                              <a aria-expanded="true" href="">
+                                                 <i class="zmdi zmdi-chevron-right zmdi-hc-fw"></i>
+                                              </a>
+                                          </div> -->
+                                    </div>
+                                </div>
+                                {{/each}}
+
+                            </div>
+                        </div>
+                        <div class="form-group form-inputc">
+                            <div class="fg-line">
+                                <!-- <input placeholder="Let us type some lorem ipsum...." type="text" class="form-control"> -->
+                                <input type="text" class="form-control input-lg nav-bar-search-bar" id="write" placeholder="Search Tenant here" autocomplete="off">
+                                <div id="keyboard"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="btn btn-primary btn-lg btn-block waves-effect stbtn start-button btnbackcolor  ">Start Button</button>
+                <button class="btn btn-primary btn-lg btn-block waves-effect stbtn home-button btnbackcolor  " style="display:none;">Home</button>
+                
+                <div class="form-group form-col">
+                    <div id="branding" class="fg-line " style="background-color: white;">
+                        {{#if isServiceTypeFree}}  {{{brandingData}}}{{/if}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-4 colmiddle-right">
+                <div class="card weather-card ">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4 text-center weather-left">
+                                <div class="london-winfo">
+                                    <p>{{DirectoryDetails.location.formattedAddress}}</p>
+                                    <div class="icon-wrap">
+                                        <i class="wi {{classForLocationWeather}} clsiconcolor"></i>
+                                    </div>
+                                    <ul class="list-inline">
+                                        <li class="tbig">{{WeatherData.temperature}}°{{DirectoryDetails.temprature}}</li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="carcal-info">
+                                    <!-- <img class="img-responsive" src="/images/cercal.png">
+                                    <ul class="list-inline">
+                                        <li><img src="/images/i1.png" title="Wind Speed">{{WeatherData.windSpeed}}</li>
+                                        <li><img src="/images/i2.png" title="Wind Bearing">{{WeatherData.windBearing}}</li>
+                                    </ul> -->
+                                </div>
+
+                            </div>
+                            <div class="col-md-8 weather-right">
+                                <div class="time-clock text-center">
+                                    <div class="time-cer clsbordercolor">
+                                        <div class="cer-vcenter">
+                                            <p>{{currentDateTime.hour}}<span>HH</span></p>
+                                        </div>
+                                    </div>
+                                    <div>:</div>
+                                    <div class="time-cer clsbordercolor">
+                                        <div class="cer-vcenter">
+                                            <p>{{currentDateTime.minute}}<span>MM</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2 class="month-title" style="margin-top:8%;">{{currentDateTime.date}}</h2>
+                                <ul class="list-inline nav-justified week-weather">
+                                    {{#each otherWeatherData}}
+                                    <li>
+                                        <div class="icon-wrap">
+                                            <i class="wi {{this.iconName}} clsiconcolor"></i>
+                                        </div>
+                                        <p>{{this.date}}</p>
+                                        <ul class="list-inline">
+                                            <li>{{this.temperatureMin}}°{{../DirectoryDetails.temprature}}</li>
+
+                                        </ul>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card post">
+                    <div class="cls-newsFeed">
+                        <div class="wrap">
+                            <div class="card news-card face front ">
+                                <!-- <img alt="" src="/images/preview.jpg" class="img-responsive"> -->
+                                <!-- <div class="bp-header clsimageappend" >
+                                          <img alt="" src="/images/preview-new.jpg" id="imagetagID" class="img-responsive">
+                                    </div> -->
+
+                                <div class="bp-header clsimageappend">
+                                    <img alt="" src="img/tv/preview-new.jpg" style="width:592px; height:258px;" id="imagetagID" class="img-responsive">
+                                </div>
+                                <div class="p-15">
+                                    <h4 class="clsRssFeedTitle" style="color:#3c7864"></h4>
+                                    <div class="clsRssFeedDesc"></div>
+                                </div>
+                                <!-- <div class="caption">
+                                        <h4 class="clsRssFeedTitle" style="color:#3c7864"></h4>
+                                        <div class="clsRssFeedDesc"></div>
+
+
+                                    </div> -->
+                                <!-- <div class="p-15 clsRssFeedTitle">
+
+                              </div>
+                              <div class="p-15 clsRssFeedDesc">
+
+                              </div> -->
+                                <!-- <a aria-hidden="true" data-icon="&#x69;" class="flipbtn flip"></a> -->
+                            </div>
+                        </div>
+                        <!-- <div class="card news-card face back">
+                              <div class="bp-header">
+                                  <img alt="" src="/images/preview.jpg" class="img-responsive">
+                                  <div class="carousel-caption">
+                                    <div class="p-15 clsRssFeedTitle">
+
+                                    </div>
+                                    <div class="p-15 clsRssFeedDesc">
+
+                                    </div>
+                                  </div>
+                              </div>
+
+                               <a aria-hidden="true" data-icon="&#x78;" class="flipbtn flipback"></a>
+                          </div> -->
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+</template>

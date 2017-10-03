@@ -1,0 +1,88 @@
+<template name="settings">
+
+    <div class="content-wrapper" style="min-height: 916px;">
+        <!-- Content Header (Page header) -->
+        <section class="block-header">
+            <h2>
+       Settings
+      </h2>
+
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <div class="box card">
+
+                        <div id="flashMsg">
+                            {{> flashMessages}}
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <!--Bind the grid-->
+                            <h3>Branding</h3>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="fg-line">
+                                            <input type="textarea" class="form-control" name="branding" placeholder="Branding" value="{{branding}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3>Rss Feeds</h3> {{#each rssFeedList}}
+                            <div class="row clsfield">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="fg-line">
+                                            <input type="text" class="form-control clsRssFeed" placeholder="Rss Feed" value="{{this}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="col-md-2 closed" data-name="close{{index}}" tooltip="f136">
+                                        <p><i class="zmdi zmdi-close zmdi-hc-fw" style="cursor:pointer"></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                            <div class="row clsfield">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="fg-line">
+                                            <input type="text" class="form-control clsRssFeed" placeholder="Rss Feed" >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="col-md-2 closed" data-name="close" tooltip="f136">
+                                        <p><i class="zmdi zmdi-close zmdi-hc-fw" style="cursor:pointer"></i></p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <a class="btn btn-info" style="margin-bottom:10px;" href="#" id="save">Save</a>
+
+                                <a class="btn btn-info" style="float:right; margin-bottom:10px;" href="#" id="add">Add</a>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+
+</template>

@@ -1,0 +1,75 @@
+<template name="profileView">
+  <div class="content-wrapper" style="min-height: 916px;">
+      <!-- Content Header (Page header) -->
+      <section class="block-header">
+          <h2>
+    Profile View
+    </h2>
+
+      </section>
+
+      <!-- Main content -->
+      <div class="box-body">
+          <div class="card">
+              <div id="flashMsg">
+                  {{> flashMessages}}
+              </div>
+
+              <div class="card-body card-padding">
+
+                  <br>
+
+                  <div class="row">
+
+                      <form id="frmProfileView" role="form">
+
+                          <div class="col-sm-6">
+                              <div class="input-group">
+                                  <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                                  <div class="fg-line">
+                                    <input name="name" type="text" placeholder="User Name" value="{{currentUser.profile.name}}" class="form-control input-md validationRequired">
+                                  </div>
+                              </div>
+
+                              <br>
+
+                              <div class="input-group">
+
+                                  <div data-provides="fileinput" class="fileinput fileinput-new">
+                                      <div data-trigger="fileinput" class="fileinput-preview thumbnail">
+                                          <img id="imgPreview" src="/cfs/files/Images/{{currentUser.profile.profilePic}}">
+                                      </div>
+                                      <div>
+                                          <span class="btn btn-info btn-file waves-effect">
+                                      <span class="fileinput-new">Select image</span>
+                                          <span class="fileinput-exists">Change</span>
+                                          <input type="file" id="logo1" class="imgInput">
+                                          </span>
+                                          <a data-dismiss="fileinput" class="btn btn-danger fileinput-exists waves-effect" href="#">Remove</a>
+                                      </div>
+                                  </div>
+                                  <!-- <span class="input-group-addon"><i class="zmdi zmdi-aspect-ratio"></i></span>
+                                  <input type="file" id="logo1" class="imgInput">
+                                  <img id="imgPreview" src="/cfs/files/Images/{{TenantDetails.logo}}" width="100" height="100"> -->
+                              </div>
+
+                              <br>
+                              <button class="btn btn-primary" type="submit">Save</button>
+
+                          </div>
+
+
+                      </form>
+
+                  </div>
+
+
+              </div>
+
+              <br>
+          </div>
+      </div>
+      <!-- /.content -->
+  </div>
+  {{loadFormValidationMessage}} {{loadtextboxfloating}}
+</template>

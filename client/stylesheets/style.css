@@ -1,0 +1,83 @@
+
+
+#keyboard{list-style:none;font:0.8em Arial,sans-serif;padding:3px;z-index:0;position:relative;margin:auto;width:100%;height:280px;min-height:280px;max-height:280px;border:1px solid #3a3d42;background:#767f8b;background-image:-moz-linear-gradient(#9098a3,#454f5d);background-image:-webkit-gradient(linear,left top,left bottom,from(#9098a3),to(#454f5d));box-shadow:0 1px 0 rgba(255,255,255,.3) inset;-moz-box-shadow:0 1px 0 rgba(255,255,255,.3) inset;-webkit-box-shadow:0 1px 0 rgba(255,255,255,.3) inset;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;}
+
+#vkBoard-main{width:100%;line-height:20px;font-size:1em;}.onkey,#vkBoard-key-backspace,#vkBoard-key-tab,#vkBoard-key-caps-lock,#vkBoard-key-enter,#vkBoard-key-left-shift,#vkBoard-key-right-shift,#vkBoard-key-space,#vkBoard-key-left-ctrl,#vkBoard-key-right-ctrl,#vkBoard-key-left-alt,#vkBoard-key-right-alt,#vkBoard{float:left;display:block;text-align:center;color:#000000;color:#FFF;text-shadow:0 -1px 1px #666;font-size:9.0pt;background:#5F6D80;background-image:-moz-linear-gradient(#B5BFCC,#5F6D80);background-image:-webkit-gradient(linear,left top,left bottom,from(#B5BFCC),to(#5F6D80));}
+
+.onkey{ width: 5.57%;}
+
+.vkBoard-keyboard-apple{color:#3a3d42;text-shadow:0 1px 1px white;background:#ecedef;background-image:-moz-linear-gradient(#f8f8f9,#dddfe1);background-image:-webkit-gradient(linear,left top,left bottom,from(#f8f8f9),to(#dddfe1));float:left;display:block;margin:4px;font:13px Verdana,Tahoma,Arial,Verdana,Helvetica;text-decoration:none;text-align:center;border:0;border-top:1px solid rgba(255,255,255,.45);border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.7), 0 1px 0 rgba(0,0,0,.3);-moz-box-shadow:0 1px 3px rgba(0,0,0,.7), 0 1px 0 rgba(0,0,0,.3);-webkit-box-shadow:0 1px 3px rgba(0,0,0,.7), 0 1px 0 rgba(0,0,0,.3);cursor:pointer;height:48px;}
+
+.vkBoard-keyboard-apple:hover{box-shadow:rgba(0,0,0,.75) 0 0 8px 2px;-o-box-shadow:rgba(0,0,0,.75) 0 0 8px 2px;-moz-box-shadow:rgba(0,0,0,.75) 0 0 8px 2px;-webkit-box-shadow:rgba(0,0,0,.75) 0 0 8px 2px;cursor:pointer;}
+
+.vkBoard-keyboard-apple:active{background-image:-moz-linear-gradient(#e2e3e4,#aaadb4);background-image:-webkit-gradient(linear,left top,left bottom,from(#e2e3e4),to(#aaadb4));cursor:pointer;position:relative;top:1px;}
+
+#vkBoard-key-backspace{width: 10.7%;}
+
+#vkBoard-key-tab{ width: 9.2%;}
+
+#kboard-k25{width: 6.9%;}
+
+#vkBoard-key-caps-lock{ width: 11.5%;}
+
+#vkBoard-key-enter{ width: 11.5%;}
+
+#vkBoard-key-left-shift{width: 14.85%;}#vkBoard-key-right-shift{width: 14.85%;}#vkBoard-key-space{width:62%;text-align:center;}#vkBoard-key-right-ctrl,#vkBoard-key-right-alt,#vkBoard-key-left-ctrl,#vkBoard-key-left-alt,#vkBoard{width: 8.35%;}.vkBoard-key-upper-letter{color:#000000;font-size:.9em;line-height:12px;text-align:left;}.vkBoard-key-label-original{margin-top:-2px;color:#454f5d;font-size:1.5em;line-height:20px;text-align:center;}.vkBoard-key-label-shift{margin-top:-2px;color:#057cb5;font-size:1.5em;line-height:20px;text-align:center;}.vkBoard-key-pressed{background:#ecedef;background-image:-moz-linear-gradient(#00c0ff,#04a8de);background-image:-webkit-gradient(linear,left top,left bottom,from(#00c0ff),to(#04a8de));cursor:pointer;position:relative;top:1px;box-shadow:rgba(0,0,0,.75) 0 0 8px 3px;-o-box-shadow:rgba(0,0,0,.75) 0 0 8px 3px;-moz-box-shadow:rgba(0,0,0,.75) 0 0 8px 3px;-webkit-box-shadow:rgba(0,0,0,.75) 0 0 8px 3px;}.onkey-remove{clear:both;}
+
+div.box notekey{opacity:1;padding-bottom:1px;color:#777;background-color:#fbfbfb;border-color:#d5d5d5;box-shadow:0px 1px 0px 0px #c8c8c8;}
+
+notekey{white-space:nowrap;font-family:inherit;font-weight:normal;font-style:normal;padding:1px 4px;background-color:#fff;border:solid 1px #d9d9d9;border-radius:3px;color:#777;box-shadow:0px 1px 0px 0px #ccc;}
+
+.container-text-post li{margin-bottom:5px;}
+
+.keyboard-image{display:none;visibility:hidden;}
+
+@media (max-width:907px){#secondary-one{width:728px;height:90px;text-align:center;overflow:hidden;}
+
+.page-wrap{width:725px;}
+
+#secondary-two{display:none;width:0px;}
+
+}
+
+@media (min-width:908px) and (max-width:1079px){.page-wrap{width:725px;}
+
+#main-content{float:none;width:725px;padding-bottom:60px;}
+
+#secondary-one{width:728px;height:90px;text-align:center;overflow:hidden;}
+
+#secondary-two{display:none;width:0px;}
+
+}
+
+@media (min-width:1080px){.page-wrap{width:1055px;position:relative;}
+
+#main-content{float:none;width:725px;margin-left:166px;padding-bottom:60px;}
+
+#secondary-one{width:160px;height:600px;position:absolute;left:0;}
+
+#secondary-two{float:right;width:160px;height:600px;}
+
+}
+
+#footerkey{
+  display: none;
+}
+
+#vkBoard-key-space {
+    width: 59.8%;
+    text-align: center;
+}
+
+.vkBoard-keyboard-apple, .onkey, #vkBoard-key-backspace, #vkBoard-key-tab, #vkBoard-key-caps-lock, #vkBoard-key-enter, #vkBoard-key-left-shift, #vkBoard-key-right-shift, #vkBoard-key-space, #vkBoard-key-left-ctrl, #vkBoard-key-right-ctrl, #vkBoard-key-left-alt, #vkBoard-key-right-alt, #vkBoard{
+  float: none;
+  display: inline-block;
+}
+
+#vkBoard-main{
+  text-align: center;
+}
+
+.vkBoard-keyboard-apple{
+margin: 3px 3px 1px 3px;
+}

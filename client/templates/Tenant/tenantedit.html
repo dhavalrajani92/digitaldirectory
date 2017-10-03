@@ -1,0 +1,122 @@
+<template name="tenantEdit">
+
+    <div class="content-wrapper" style="min-height: 916px;">
+        <!-- Content Header (Page header) -->
+        <section class="block-header">
+            <h2>
+       Edit tenant
+      </h2>
+            <ol style="float:right;" class="breadcrumb">
+                <li><a href="{{pathFor 'dashboard'}}"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a class="" href="{{pathFor 'tenant'}}">tenant</a></li>
+                <li><a class="active" href="{{pathFor 'tenant.edit'}}">Edit</a></li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <div class="box-body">
+            <div class="card">
+                <div id="flashMsg">
+                    {{> flashMessages}}
+                </div>
+
+                <div class="card-body card-padding">
+
+                    <br>
+
+                    <div class="row">
+
+                        <form id="tenantEdit" role="form">
+
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                                    <div class="fg-line">
+                                        <select id="DirectoryID" name="DirectoryID" class="form-control">
+                                            {{#each DirectoryList}}
+                                            <option value="{{_id}}" {{optionIsSelected ../TenantDetails.DirectoryID _id }}>{{title}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="zmdi zmdi-account"></i></span>
+                                    <div class="fg-line">
+                                        <input type="text" name="Name" placeholder="Name" value="{{TenantDetails.Name}}" id="Name1" class="form-control validationRequired">
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="zmdi zmdi-my-location"></i></span>
+                                    <div class="fg-line">
+                                        <input type="text" name="Floor" placeholder="Floor" value="{{TenantDetails.Floor}}" id="Floor1" class="form-control validationRequired">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                                    <div class="fg-line">
+                                        <input type="text" name="Suite" placeholder="Suite" value="{{TenantDetails.Suite}}" id="Suite1" class="form-control validationRequired">
+                                    </div>
+                                </div>
+                                <br>
+                                <button class="btn btn-primary" type="submit">Update</button>
+                                <button class="btn btn-danger" id="form-cancel-button" type="button">Cancle</button>
+
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" {{radioIsSelected TenantDetails.IsVisible}} name="IsVisible" id="IsVisible">
+                                        <i class="input-helper"></i> IsVisible
+                                    </label>
+                                </div>
+                                <!-- <div class="input-group">
+                                <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                                <div class="fg-line">
+                                    <input type="checkbox" name="IsVisible" id="IsVisible">
+                                </div>
+                            </div> -->
+                                <br>
+                                <div class="input-group">
+
+                                    <div data-provides="fileinput" class="fileinput fileinput-new">
+                                        <div data-trigger="fileinput" class="fileinput-preview thumbnail">
+                                            <img id="imgPreview" src="/cfs/files/Images/{{TenantDetails.logo}}">
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-info btn-file waves-effect">
+                                        <span class="fileinput-new">Select image</span>
+                                            <span class="fileinput-exists">Change</span>
+                                            <input type="file" id="logo1" class="imgInput">
+                                            </span>
+                                            <a data-dismiss="fileinput" class="btn btn-danger fileinput-exists waves-effect" href="#">Remove</a>
+                                        </div>
+                                    </div>
+                                    <!-- <span class="input-group-addon"><i class="zmdi zmdi-aspect-ratio"></i></span>
+                                    <input type="file" id="logo1" class="imgInput">
+                                    <img id="imgPreview" src="/cfs/files/Images/{{TenantDetails.logo}}" width="100" height="100"> -->
+                                </div>
+                                <br/>
+                                <br/>
+                            </div>
+                        </form>
+
+                    </div>
+
+
+                </div>
+
+                <br>
+            </div>
+        </div>
+        <!-- /.content -->
+    </div>
+    {{loadFormValidationMessage}} {{loadtextboxfloating}}
+</template>
