@@ -10,7 +10,7 @@ Meteor.methods({
             var btcommon_insert = new Future();
             var DirectoryID = insertSync(values);
             debugger;
-            console.log(DirectoryID);
+            console.log(DirectoryID,values.newsFeed);
             Meteor.call("getRssContent", "rssFeed", values.newsFeed, DirectoryID, false, function(error, result) {
                 console.log(error);
                 console.log(result);
@@ -36,19 +36,25 @@ Meteor.methods({
 
         if (key == "directory") {
             var btcommon_update = new Future();
-            Meteor.call("getRssContent", "rssFeed", values.newsFeed, id, false, function(error, result) {
-                console.log(error);
-                console.log(result);
-                if (error) {
-                    btcommon_update.return(error);
-                } else {
-                    btcommon_update.return(updateSync({
-                        _id: id
-                    }, {
-                        $set: values
-                    }));
-                }
-            });
+            console.log("values",values.newsFeed);
+            // Meteor.call("getRssContent", "rssFeed", values.newsFeed, id, false, function(error, result) {
+            //     console.log("error",error);
+            //     console.log("result",result);
+            //     if (error) {
+            //         btcommon_update.return(error);
+            //     } else {
+            //         btcommon_update.return(updateSync({
+            //             _id: id
+            //         }, {
+            //             $set: values
+            //         }));
+            //     }
+            // });
+            btcommon_update.return(updateSync({
+                _id: id
+            }, {
+                $set: values
+            }));
             return btcommon_update.wait();
         } else {
             return updateSync({

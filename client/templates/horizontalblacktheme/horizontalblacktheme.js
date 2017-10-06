@@ -3,7 +3,7 @@ var keyboardglobalval = '';
 Template.horizontalblacktheme.created = function() {
   slider = null;
   keyboardglobalval = '';
-    var Tempraturetype = this.data.DirectoryDetails.temprature;
+    var Tempraturetype = this.data && this.data.DirectoryDetails && this.data.DirectoryDetails.temprature ? this.data.DirectoryDetails.temprature : "";
     Meteor.call("getWeatherData", this.data.DirectoryDetails.location.geopoint[0] + ',' + this.data.DirectoryDetails.location.geopoint[1], function(err, response) {
         if (err) {
             console.log(err);
