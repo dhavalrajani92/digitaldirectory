@@ -42,12 +42,13 @@ this.DirectoryControllerView = RouteController.extend({
     },
     data: function () {
         if (this.ready()) {
+            var ressFeed = rssFeedDdl.find().fetch();
             return {
                 _id: this.params._id,
                 DirectoryDetails: directory.findOne({ _id: this.params._id }),
                 rssFeeds: rssFeed.findOne({ directoryId: this.params._id }),
                 getAllTennant_Directory: tenant.find().fetch(),
-                brandingData:rssFeedDdl.find().fetch()[0].branding
+                brandingData:rssFeed && rssFeed.length > 0 ? rssFeed[0].branding : ""
 
 
             }

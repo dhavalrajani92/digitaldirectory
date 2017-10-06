@@ -8,24 +8,26 @@
    slider = null;
 
      var Tempraturetype = this.data.DirectoryDetails.temprature;
-     console.log(this.data.DirectoryDetails.location.geopoint[0]);
-     Meteor.call("getWeatherData", this.data.DirectoryDetails.location.geopoint[0] + ',' + this.data.DirectoryDetails.location.geopoint[1], function(err, response) {
-         if (err) {
-             console.log(err);
-         } else {
-             if (Tempraturetype == "C") {
-                 response.currently.temperature = ((response.currently.temperature - 32) * 5 / 9).toFixed(0);
-             }
-             else {
-                 response.currently.temperature= (response.currently.temperature).toFixed(0);
-             }
-
-             Session.set('WeatherData', response);
-
-         }
-
-
-     });
+     //console.log(this.data.DirectoryDetails.location.geopoint[0]);
+     if(this.data && this.data.DirectoryDetails && this.data.DirectoryDetails.location && this.data.DirectoryDetails.location.geopoint && this.data.DirectoryDetails.location.geopoint.length > 0){
+        Meteor.call("getWeatherData", this.data.DirectoryDetails.location.geopoint[0] + ',' + this.data.DirectoryDetails.location.geopoint[1], function(err, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                if (Tempraturetype == "C") {
+                    response.currently.temperature = ((response.currently.temperature - 32) * 5 / 9).toFixed(0);
+                }
+                else {
+                    response.currently.temperature= (response.currently.temperature).toFixed(0);
+                }
+   
+                Session.set('WeatherData', response);
+   
+            }
+   
+   
+        });
+     }
      var tdata = this.data.getAllTennant_Directory;
      Session.set("getAllTennat", tdata);
 
@@ -398,20 +400,22 @@ Template.directoryview.events({
        capslock = false;
    slider = null
      var Tempraturetype = this.data.DirectoryDetails.temprature;
-     Meteor.call("getWeatherData", this.data.DirectoryDetails.location.geopoint[0] + ',' + this.data.DirectoryDetails.location.geopoint[1], function(err, response) {
-         if (err) {
-             console.log(err);
-         } else {
-             if (Tempraturetype == "C") {
-                 response.currently.temperature = ((response.currently.temperature - 32) * 5 / 9).toFixed(0);
-             }
-             else {
-                 response.currently.temperature= ( response.currently.temperature).toFixed(0);
-             }
-             Session.set('WeatherData', response);
-
-         }
-     });
+     if(this.data && this.data.DirectoryDetails && this.data.DirectoryDetails.location && this.data.DirectoryDetails.location.geopoint && this.data.DirectoryDetails.location.geopoint.length > 0){
+        Meteor.call("getWeatherData", this.data.DirectoryDetails.location.geopoint[0] + ',' + this.data.DirectoryDetails.location.geopoint[1], function(err, response) {
+            if (err) {
+                console.log(err);
+            } else {
+                if (Tempraturetype == "C") {
+                    response.currently.temperature = ((response.currently.temperature - 32) * 5 / 9).toFixed(0);
+                }
+                else {
+                    response.currently.temperature= ( response.currently.temperature).toFixed(0);
+                }
+                Session.set('WeatherData', response);
+   
+            }
+        });
+    }
 
      console.log(this.data.getAllTennant_Directory);
      var tdata = this.data.getAllTennant_Directory;
